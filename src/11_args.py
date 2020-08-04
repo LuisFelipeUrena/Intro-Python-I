@@ -2,15 +2,21 @@
 # arguments.
 
 # Write a function f1 that takes two integer positional arguments and returns
-# the sum. This is what you'd consider to be a regular, normal function.
+# the sum. This is what you'd consider to be a regular, normal function.\
+import math
 
 # YOUR CODE HERE
+def f1(n1,n2):
+    return n1 + n2
 
 print(f1(1, 2))
 
 # Write a function f2 that takes any number of integer arguments and returns the
 # sum.
 # Note: Google for "python arbitrary arguments" and look for "*args"
+
+def f2(*argv):
+    return sum(argv)
 
 # YOUR CODE HERE
 
@@ -22,7 +28,10 @@ print(f2(7, 9, 1, 3, 4, 9, 0))  # Should print 33
 a = [7, 6, 5, 4]
 
 # How do you have to modify the f2 call below to make this work?
-print(f2(a))    # Should print 22
+# def f2(**kwargs):
+#     return sum(kwargs)
+
+print(f2(*a))    # Should print 22
 
 # Write a function f3 that accepts either one or two arguments. If one argument,
 # it returns that value plus 1. If two arguments, it returns the sum of the
@@ -30,6 +39,15 @@ print(f2(a))    # Should print 22
 # Note: Google "python default arguments" for a hint.
 
 # YOUR CODE HERE
+def f3(argv,arg2=1):
+    return argv + arg2
+
+
+
+    # # if argv == 1:
+    #     print(argv + arg2)
+    # # else:
+    # #     print(sum(argv))    
 
 print(f3(1, 2))  # Should print 3
 print(f3(8))     # Should print 9
@@ -44,11 +62,15 @@ print(f3(8))     # Should print 9
 # Note: Google "python keyword arguments".
 
 # YOUR CODE HERE
+def f4(**kwargs):
+    for key, value in kwargs.items():
+        print(f'Key:{key} , Value:{value}')
 
 # Should print
 # key: a, value: 12
 # key: b, value: 30
 f4(a=12, b=30)
+
 
 # Should print
 # key: city, value: Berkeley
@@ -62,4 +84,4 @@ d = {
 }
 
 # How do you have to modify the f4 call below to make this work?
-f4(d)
+f4(**d)
